@@ -28,12 +28,12 @@ cat("###############################\n")
 print(opt)
 
 input=fread(opt$input.file,header=T,sep="\t",showProgress = FALSE)
-V1=input$ExonicFunc.refGene
-V1[which(is.na(V1))]=input$Func.refGene[which(is.na(V1))]
+V1=input$ExonicFunc.wgEncodeGencodeBasicV45
+V1[which(is.na(V1))]=input$Func.wgEncodeGencodeBasicV45[which(is.na(V1))]
 input$V1=V1
-input=input[,c("Otherinfo1","Chr","Start","Ref","Alt","Gene.refGene","AAChange.refGene","cosmic96_coding","gnomAD_genome_ALL","V1","CADD13_PHRED")]
+input=input[,c("Otherinfo1","Chr","Start","Ref","Alt","Gene.wgEncodeGencodeBasicV45","AAChange.wgEncodeGencodeBasicV45","COSMIC99","gnomad40_genome_AF","V1","generic")]
 
-colnames(input)=c("smMIP","chr","pos","ref","alt","gene","protein","cosmic","maf","variant_type","cadd_scaled")
+colnames(input)=c("smMIP","chr","pos","ref","alt","gene","protein","cosmic","population_af","variant_type","alphamissense")
 if(length(grep("chr",head(input$chr)))==0){input$chr=paste0("chr",input$chr)}
 
 write.table(input,file=paste0(dirname(opt$input),"/annotated_Target_MIPgen.txt"),col.names = T,row.names = F,quote = F,sep = '\t')

@@ -1,6 +1,7 @@
 #!/usr/bin/env Rscript
 
 library("optparse")
+library("parallel")
 
 ################ INPUT PARAMETERS
 #define parameters
